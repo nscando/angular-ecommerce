@@ -10,6 +10,8 @@ import { FiltrosComponent } from './components/shopping-cart/filtros/filtros.com
 import { ProductListComponent } from './components/shopping-cart/product-list/product-list.component';
 import { CartComponent } from './components/shopping-cart/cart/cart.component';
 import { CartItemComponent } from './components/shopping-cart/cart/cart-item/cart-item.component';
+import { ProductItemComponent } from './components/shopping-cart/product-list/product-item/product-item.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -21,10 +23,12 @@ import { CartItemComponent } from './components/shopping-cart/cart/cart-item/car
     FiltrosComponent,
     ProductListComponent,
     CartComponent,
-    CartItemComponent
+    CartItemComponent,
+    ProductItemComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
