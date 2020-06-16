@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/shared/header/header.component';
@@ -24,13 +25,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ProductListComponent,
     CartComponent,
     CartItemComponent,
-    ProductItemComponent
+    ProductItemComponent,
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule
-  ],
+  imports: [BrowserModule, BrowserAnimationsModule, HttpClientModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

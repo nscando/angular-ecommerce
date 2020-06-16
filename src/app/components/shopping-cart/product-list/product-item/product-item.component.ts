@@ -3,6 +3,9 @@ import { Product } from 'src/app/models/product';
 
 import { ConectorService } from './../../../../services/conector.service';
 
+import { CartService } from './../../../../services/cart.service';
+import { Subscriber } from 'rxjs';
+
 @Component({
   selector: 'app-product-item',
   templateUrl: './product-item.component.html',
@@ -11,11 +14,13 @@ import { ConectorService } from './../../../../services/conector.service';
 export class ProductItemComponent implements OnInit {
   @Input() productItem: Product;
 
-  constructor(private msg: ConectorService) {}
+  constructor(private msg: ConectorService, private cartService: CartService) {}
 
   ngOnInit(): void {}
 
   handleAddToCart() {
-    this.msg.sendMsg(this.productItem);
+    this.cartService.addProductToCart(this.productItem).subscribe(() => {
+      this.msg.sendMsg(this.productItem);
+    });
   }
 }
