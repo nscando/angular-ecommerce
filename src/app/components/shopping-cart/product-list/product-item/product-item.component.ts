@@ -4,7 +4,7 @@ import { Product } from 'src/app/models/product';
 import { ConectorService } from './../../../../services/conector.service';
 
 import { CartService } from './../../../../services/cart.service';
-import { Subscriber } from 'rxjs';
+import { WishlistService } from './../../../../services/wishlist.service';
 
 @Component({
   selector: 'app-product-item',
@@ -14,7 +14,13 @@ import { Subscriber } from 'rxjs';
 export class ProductItemComponent implements OnInit {
   @Input() productItem: Product;
 
-  constructor(private msg: ConectorService, private cartService: CartService) {}
+  @Input() addedToWishList: boolean;
+
+  constructor(
+    private msg: ConectorService,
+    private cartService: CartService,
+    private wishlistService: WishlistService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -22,5 +28,18 @@ export class ProductItemComponent implements OnInit {
     this.cartService.addProductToCart(this.productItem).subscribe(() => {
       this.msg.sendMsg(this.productItem);
     });
+  }
+  handleAddToWishList() {
+    this.wishlistService.addtoWishList(this.productItem.id).subscribe(() => {
+      this.addedToWishList = true;
+    });
+  }
+
+  handleRemoveFromWishList() {
+    this.wishlistService
+      .removeFromWishList(this.productItem.id)
+      .subscribe(() => {
+        this.addedToWishList = false;
+      });
   }
 }
