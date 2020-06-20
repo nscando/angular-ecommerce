@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/shared/header/header.component';
@@ -17,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component';
+import { ProductDetailComponent } from './components/shopping-cart/product-list/product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
@@ -33,12 +35,15 @@ import { PageNotFoundComponent } from './components/shared/page-not-found/page-n
     LoginComponent,
     RegisterComponent,
     PageNotFoundComponent,
+    ProductDetailComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
 
   providers: [],

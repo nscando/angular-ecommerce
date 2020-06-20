@@ -25,3 +25,12 @@ body {
   color: palevioletred;
   cursor: pointer;
 }
+
+.guest-form-card h2 {
+  text-transform: uppercase;
+  font-size: medium;
+}
+
+.guest-form-card label {
+  font-size: small;
+}
