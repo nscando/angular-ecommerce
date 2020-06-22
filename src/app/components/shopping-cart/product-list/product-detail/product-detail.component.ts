@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { ProductService } from 'src/app/services/product.service';
@@ -9,8 +9,10 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./product-detail.component.css'],
 })
 export class ProductDetailComponent implements OnInit {
-  id;
-  producto = {};
+  id: string;
+  producto = [];
+  productos = [];
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private productService: ProductService
@@ -18,9 +20,17 @@ export class ProductDetailComponent implements OnInit {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
     console.log(this.id);
 
-    this.productService.getById(this.id).subscribe((data) => {
+    this.productService.getById().subscribe((data) => {
       console.log(data);
-      this.producto[0];
+      this.productos.push(data);
+      this.productos.find((result) => {
+        result.forEach((item) => {
+          if (item.id == this.id) {
+            console.log(item);
+            this.producto = item;
+          }
+        });
+      });
     });
   }
 
