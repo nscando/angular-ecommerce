@@ -15,7 +15,6 @@ export class ProductDetailComponent implements OnInit {
     price: "",
     description: "",
     imageUrl: "",
-
   };
   productos = [];
 
@@ -27,7 +26,7 @@ export class ProductDetailComponent implements OnInit {
     console.log(this.id);
 
     this.productService.getById().subscribe((data) => {
-      console.log(data);
+
       this.productos.push(data);
       this.productos.find((result) => {
         result.forEach((item) => {
