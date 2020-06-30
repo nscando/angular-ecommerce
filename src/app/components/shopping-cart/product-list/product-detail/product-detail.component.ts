@@ -10,7 +10,13 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ProductDetailComponent implements OnInit {
   id: string;
-  producto = [];
+  producto = {
+    name: "",
+    price: "",
+    description: "",
+    imageUrl: "",
+
+  };
   productos = [];
 
   constructor(
@@ -34,5 +40,5 @@ export class ProductDetailComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }
