@@ -9,14 +9,14 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class WishlistService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getWishList() {
     return this.http.get(wishlistUrl).pipe(
       map((result: any[]) => {
         let productIds = [];
 
-        result.forEach((item) => productIds.push(item.id));
+        result.forEach((item) => productIds.push(item._id));
 
         return productIds;
       })
@@ -24,7 +24,7 @@ export class WishlistService {
   }
 
   addtoWishList(productId) {
-    return this.http.post(wishlistUrl, { id: productId });
+    return this.http.post(wishlistUrl, { _id: productId });
   }
 
   removeFromWishList(productId) {

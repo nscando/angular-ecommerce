@@ -10,7 +10,7 @@ import { productsUrl } from 'src/app/config/api';
   providedIn: 'root',
 })
 export class ProductService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(productsUrl);

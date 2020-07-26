@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -19,6 +19,8 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component';
 import { ProductDetailComponent } from './components/shopping-cart/product-list/product-detail/product-detail.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { InterceptorsService } from './interceptors.service';
 
 @NgModule({
   declarations: [
@@ -44,9 +46,12 @@ import { ProductDetailComponent } from './components/shopping-cart/product-list/
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    MatSnackBarModule
   ],
 
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorsService, multi: true }
+  ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

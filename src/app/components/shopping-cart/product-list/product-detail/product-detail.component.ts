@@ -30,7 +30,7 @@ export class ProductDetailComponent implements OnInit {
       this.productos.push(data);
       this.productos.find((result) => {
         result.forEach((item) => {
-          if (item.id == this.id) {
+          if (item._id == this.id) {
             console.log(item);
             this.producto = item;
           }

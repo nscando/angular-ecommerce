@@ -12,7 +12,7 @@ import { Product } from '../models/product';
   providedIn: 'root',
 })
 export class CartService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getCartItems(): Observable<CartItem[]> {
     return this.http.get<CartItem[]>(cartUrl).pipe(
@@ -23,7 +23,7 @@ export class CartService {
           let productExists = false;
 
           for (let i in cartItems) {
-            if (cartItems[i].productId === item.product.id) {
+            if (cartItems[i].productId === item.product._id) {
               cartItems[i].cant++;
               productExists = true;
               break;
@@ -31,7 +31,7 @@ export class CartService {
           }
 
           if (!productExists) {
-            cartItems.push(new CartItem(item.id, item.product));
+            cartItems.push(new CartItem(item._id, item.product));
           }
         }
 

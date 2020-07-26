@@ -20,9 +20,9 @@ export class ProductItemComponent implements OnInit {
     private msg: ConectorService,
     private cartService: CartService,
     private wishlistService: WishlistService
-  ) {}
+  ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   handleAddToCart() {
     this.cartService.addProductToCart(this.productItem).subscribe(() => {
@@ -30,14 +30,14 @@ export class ProductItemComponent implements OnInit {
     });
   }
   handleAddToWishList() {
-    this.wishlistService.addtoWishList(this.productItem.id).subscribe(() => {
+    this.wishlistService.addtoWishList(this.productItem._id).subscribe(() => {
       this.addedToWishList = true;
     });
   }
 
   handleRemoveFromWishList() {
     this.wishlistService
-      .removeFromWishList(this.productItem.id)
+      .removeFromWishList(this.productItem._id)
       .subscribe(() => {
         this.addedToWishList = false;
       });
