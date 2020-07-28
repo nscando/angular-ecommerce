@@ -19,11 +19,9 @@ export class LoginComponent implements OnInit {
     private _snackBar: MatSnackBar
   ) {
     this.myForm = this.fb.group({
-      email: ['', [Validators.required]],
-      password: [
-        '',
-        [Validators.required, Validators.minLength(6), Validators.maxLength(8)],
-      ],
+      user: ["", Validators.required],
+      password: ["", Validators.required]
+
     });
   }
   login() {

@@ -19,7 +19,7 @@ export class AutenticacionService {
     }
   }
   login(datos) {
-    return this.http.post(baseUrl + "/login/", datos)
+    return this.http.post(baseUrl + "/login", datos)
   }
   register(datos) {
     return this.http.post(registerUrl, datos)
